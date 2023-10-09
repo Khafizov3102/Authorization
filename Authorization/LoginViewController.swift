@@ -19,36 +19,31 @@ final class LoginViewController: UIViewController {
         guard segue.identifier == "WelcomeSegue" else { return }
         guard let destination = segue.destination as? WelcomeViewController else { return }
         
-        destination.username = usernameTextField.text ?? ""
+        destination.username = usernameTextField.text
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         guard usernameTextField.text == username, passwordTextField.text == password else {
-            showLoginAlert()
-            usernameTextField.text = ""
-            passwordTextField.text = ""
+            setupAlert(title: "Неверный логин или пароль", message: "Проверльте правильность ведненных данных и попробуйте еще раз.", textField: passwordTextField)
             return false
         }
         return true
     }
     
     @IBAction func forgotUsernameButtonPressed() {
-        showUsernameAlert()
+        setupAlert(title: "Забыли имя пользователя?", message: "Ваше имя пользователя: \(username)")
     }
     
     @IBAction func forgotPassButtonPressed() {
-        showPasswordAlert()
+        setupAlert(title: "Забыли пароль?", message: "Ваш пароль: \(password)")
     }
     
     @IBAction func loginButtonPressed() {
-        if shouldPerformSegue(withIdentifier: "WelcomeSegue", sender: self) {
-            performSegue(withIdentifier: "WelcomeSegue", sender: self)
-        }
     }
     
     
@@ -57,46 +52,19 @@ final class LoginViewController: UIViewController {
         passwordTextField.text = ""
     }
     
-    func showUsernameAlert() {
-        let usernameAlertController = UIAlertController(
-            title: "Forgot your username?",
-            message: "Your username is \(username)",
+    private func setupAlert(title: String, message: String?, textField: UITextField? = nil) {
+        let alertController = UIAlertController(
+            title: title,
+            message: message,
             preferredStyle: .alert
         )
+
+        let action = UIAlertAction(title: "OK", style: .default) { _ in
+            textField?.text = ""
+        }
+        alertController.addAction(action)
         
-        let action = UIAlertAction(title: "OK", style: .default)
-        
-        usernameAlertController.addAction(action)
-        
-        present(usernameAlertController, animated: true, completion: nil)
-    }
-    
-    func showPasswordAlert() {
-        let passwordAlertController = UIAlertController(
-            title: "Forgot password?",
-            message: "Your password is \(password)",
-            preferredStyle: .alert
-        )
-        
-        let action = UIAlertAction(title: "OK", style: .default)
-        
-        passwordAlertController.addAction(action)
-        
-        present(passwordAlertController, animated: true, completion: nil)
-    }
-    
-    func showLoginAlert() {
-        let loginAlertController = UIAlertController(
-            title: "Invalid username or password",
-            message: "Please, enter correct username and password",
-            preferredStyle: .alert
-        )
-        
-        let action = UIAlertAction(title: "OK", style: .default)
-        
-        loginAlertController.addAction(action)
-        
-        present(loginAlertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 }
 
