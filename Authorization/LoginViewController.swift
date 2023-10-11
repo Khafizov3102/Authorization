@@ -12,14 +12,21 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    private let username = "admin"
-    private let password = "admin"
+    let user = UserModel.getUser()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "WelcomeSegue" else { return }
-        guard let destination = segue.destination as? WelcomeViewController else { return }
+        guard let tabBarController = segue.destination as? UITabBarController else { return }
+        guard let viewControllers = tabBarController.viewControllers else { return }
         
-        destination.username = usernameTextField.text
+        for viewController in viewControllers {
+            if let welcomeVC = viewController as? WelcomeViewController {
+                welcomeVC.user = user
+            } else if let navigationVC = viewController as? UINavigationController {
+                guard let userInfoVC = navigationVC.topViewController as? UserInfoViewController else { return }
+                userInfoVC.userInfo = user.userInfo
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -28,24 +35,20 @@ final class LoginViewController: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        guard usernameTextField.text == username, passwordTextField.text == password else {
+        guard usernameTextField.text == user.login, passwordTextField.text == user.password else {
             setupAlert(title: "Неверный логин или пароль", message: "Проверльте правильность ведненных данных и попробуйте еще раз.", textField: passwordTextField)
             return false
         }
         return true
     }
     
-    @IBAction func forgotUsernameButtonPressed() {
-        setupAlert(title: "Забыли имя пользователя?", message: "Ваше имя пользователя: \(username)")
+    @IBAction func forgotButtonPressed(_ sender: UIButton) {
+        if sender.tag == 1 {
+            setupAlert(title: "Забыли имя пользователя?", message: "Ваше имя пользователя: \(user.login)")
+        } else {
+            setupAlert(title: "Забыли пароль?", message: "Ваш пароль: \(user.password)")
+        }
     }
-    
-    @IBAction func forgotPassButtonPressed() {
-        setupAlert(title: "Забыли пароль?", message: "Ваш пароль: \(password)")
-    }
-    
-    @IBAction func loginButtonPressed() {
-    }
-    
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
         usernameTextField.text = ""
@@ -58,7 +61,7 @@ final class LoginViewController: UIViewController {
             message: message,
             preferredStyle: .alert
         )
-
+        
         let action = UIAlertAction(title: "OK", style: .default) { _ in
             textField?.text = ""
         }

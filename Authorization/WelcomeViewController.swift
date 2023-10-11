@@ -10,12 +10,20 @@ import UIKit
 final class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var userInfoLabel: UILabel!
     
-    var username: String!
+    var user: UserModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        welcomeLabel.text = "Welcome, \(username ?? "")"
+        setupLabel(label: welcomeLabel, text: "Welcome, \(user.login)")
+        setupLabel(label: userInfoLabel, text: "My name is \(user.userInfo.name) \(user.userInfo.surname)")
+        
+    }
+    
+    private func setupLabel(label: UILabel, text: String) {
+        label.font = .boldSystemFont(ofSize: 23)
+        label.text = text
     }
 }

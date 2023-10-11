@@ -7,23 +7,40 @@
 
 import UIKit
 
-class UserInfoViewController: UIViewController {
+final class UserInfoViewController: UIViewController {
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var surnameLabel: UILabel!
+    @IBOutlet weak var companyLabel: UILabel!
+    @IBOutlet weak var departmentLabel: UILabel!
+    @IBOutlet weak var postLabel: UILabel!
+    
+    @IBOutlet weak var userImage: UIImageView!
+    
+    var userInfo: userInformanion!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.title = "\(userInfo.name) \(userInfo.surname)"
+        userImage.image = userInfo.image
+        setupLabel()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        userImage.layer.cornerRadius = userImage.frame.height / 2
     }
-    */
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "UserInfoSegue" else { return }
+        guard let infoViewController = segue.destination as? MoreInfoViewController else { return }
+        infoViewController.userInfo = userInfo
+    }
+    
+    func setupLabel() {
+        nameLabel.text = "Имя: \(userInfo.name)"
+        surnameLabel.text = "Фамилия: \(userInfo.surname)"
+        companyLabel.text = "Компания: \(userInfo.company)"
+        departmentLabel.text = "Отдел: \(userInfo.department)"
+        postLabel.text = "Должность: \(userInfo.post)"
+    }
 }

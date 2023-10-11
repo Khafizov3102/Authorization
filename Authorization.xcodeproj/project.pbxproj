@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D1C90C42AD6947D0045A648 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C90C32AD6947D0045A648 /* UserModel.swift */; };
 		2D967C7F2AD02CB6001A81E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D967C7E2AD02CB6001A81E1 /* AppDelegate.swift */; };
 		2D967C812AD02CB6001A81E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D967C802AD02CB6001A81E1 /* SceneDelegate.swift */; };
 		2D967C832AD02CB6001A81E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D967C822AD02CB6001A81E1 /* LoginViewController.swift */; };
@@ -14,9 +15,12 @@
 		2D967C882AD02CB6001A81E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D967C872AD02CB6001A81E1 /* Assets.xcassets */; };
 		2D967C8B2AD02CB6001A81E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D967C892AD02CB6001A81E1 /* LaunchScreen.storyboard */; };
 		2D967C932AD032C9001A81E1 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D967C922AD032C9001A81E1 /* WelcomeViewController.swift */; };
+		2DB693132AD6CFC4006111B9 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB693122AD6CFC4006111B9 /* UserInfoViewController.swift */; };
+		2DB693172AD728EB006111B9 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB693162AD728EB006111B9 /* MoreInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D1C90C32AD6947D0045A648 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		2D967C7B2AD02CB6001A81E1 /* Authorization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Authorization.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D967C7E2AD02CB6001A81E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D967C802AD02CB6001A81E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +30,8 @@
 		2D967C8A2AD02CB6001A81E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D967C8C2AD02CB6001A81E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D967C922AD032C9001A81E1 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		2DB693122AD6CFC4006111B9 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		2DB693162AD728EB006111B9 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +68,10 @@
 				2D967C802AD02CB6001A81E1 /* SceneDelegate.swift */,
 				2D967C822AD02CB6001A81E1 /* LoginViewController.swift */,
 				2D967C922AD032C9001A81E1 /* WelcomeViewController.swift */,
+				2DB693122AD6CFC4006111B9 /* UserInfoViewController.swift */,
+				2D1C90C32AD6947D0045A648 /* UserModel.swift */,
 				2D967C842AD02CB6001A81E1 /* Main.storyboard */,
+				2DB693162AD728EB006111B9 /* MoreInfoViewController.swift */,
 				2D967C872AD02CB6001A81E1 /* Assets.xcassets */,
 				2D967C892AD02CB6001A81E1 /* LaunchScreen.storyboard */,
 				2D967C8C2AD02CB6001A81E1 /* Info.plist */,
@@ -142,8 +151,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D967C832AD02CB6001A81E1 /* LoginViewController.swift in Sources */,
+				2DB693132AD6CFC4006111B9 /* UserInfoViewController.swift in Sources */,
 				2D967C932AD032C9001A81E1 /* WelcomeViewController.swift in Sources */,
+				2DB693172AD728EB006111B9 /* MoreInfoViewController.swift in Sources */,
 				2D967C7F2AD02CB6001A81E1 /* AppDelegate.swift in Sources */,
+				2D1C90C42AD6947D0045A648 /* UserModel.swift in Sources */,
 				2D967C812AD02CB6001A81E1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
